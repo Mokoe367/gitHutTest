@@ -1,0 +1,187 @@
+﻿@model IEnumerable<CompanyProject.Models.ManagerViewModel>
+@{
+    ViewData["Title"] = "Index";
+    ViewBag.Title = "Manager View";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
+}
+
+<style>
+    #table-div {
+        margin: 25px;
+    }
+</style>
+
+<div style="margin: 25px">
+    <h2>Manager View</h2>
+    @if (ViewData["userInfo"] != null)
+    {
+        @ViewData["userInfo"];
+
+    }
+</div>
+
+<div id="table-div">
+    <a asp-controller="Manager" class="btn btn-primary" asp-action="AddEmployee">Add Employee</a>
+    <table class="table table-hover col-md-3 table-striped table-bordered caption-top">
+        <caption>Employees</caption>
+        <thead>
+            <tr>
+                <th>
+                    Employee ID
+                </th>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    Middle Name
+                </th>
+                <th>
+                    Last Name
+                </th>               
+                <th>
+                    Address
+                </th>
+                <th>
+                    Gender
+                </th>
+                <th>
+                    Birthday
+                </th>
+                <th>
+                    Salary
+                </th>
+                <th>
+                    Role ID
+                </th>               
+                <th>
+                    Superviser ID
+                </th>            
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.FirstOrDefault().Employees)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sex)
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </td>
+                <td>
+                    $@Html.DisplayFor(modelItem => item.Salary)
+                </td>
+                <td>
+                    @if (item.RoleID != 0)
+                    {
+                        @Html.DisplayFor(modelItem => item.RoleID)
+                    }
+                </td>               
+                <td>
+                    @if (item.SuperID != 0)
+                    {
+                        @Html.DisplayFor(modelItem => item.SuperID)
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditEmployee", new { id = item.ID }) |
+                    @Html.ActionLink("Task Details", "TaskDetails", new { id = item.ID }) |
+                    @Html.ActionLink("Fire", "FireEmployee", new { id = item.ID })
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div id="table-div">
+    <a asp-controller="Manager" class="btn btn-primary" asp-action="AddProject">Add Project</a>
+    <table class="table table-hover col-md-3 table-striped table-bordered caption-top">
+        <caption>Projects</caption>
+        <thead>
+            <tr>
+                <th>
+                    Project ID
+                </th>
+                <th>
+                    Project Name
+                </th>
+                <th>
+                    Department Location
+                </th>
+                <th>
+                    Budget
+                </th>
+                <th>
+                    Project Status
+                </th>
+                <th>
+                    Project Due Date
+                </th>            
+                <th>
+                    Field
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.FirstOrDefault().Projects)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.projID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.projName)
+                    </td>               
+                    <td>
+                        @Html.DisplayFor(modelItem => item.location)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.projStatus)%
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dueDate)
+                    </td>                 
+                    <td>
+                        @Html.DisplayFor(modelItem => item.field)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditProject", new { id = item.projID }) |
+                        @Html.ActionLink("Delete/Restore", "DeleteProject", new { id = item.projID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!--Table that shows each product's id, name, due date, field, and budget.
+
+Table that shows task id, name, due date, budget, projD or Projname, and the employee that is working on it.employee role can be included
+
+Table shows department distributions
+
+Table shows employee used by
+
+supplier information??-->

@@ -1,0 +1,40 @@
+﻿@model CompanyProject.Models.Department
+
+@{
+    ViewData["Title"] = "AddDepartment";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="margin:25px">Add Department</h2>
+
+
+<div class="row" style="margin:25px">
+    <div class="col-md-4">
+        <form asp-action="AddDepartment">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label asp-for="location" class="control-label">Location</label>
+                <input asp-for="location" class="form-control" />
+                <span asp-validation-for="location" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="depName" class="control-label">Department Name</label>
+                <input asp-for="depName" class="form-control" />
+                <span asp-validation-for="depName" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="mgrID" class="control-label">Manager ID (0 for null)</label>
+                <input asp-for="mgrID" class="form-control" />
+                <span asp-validation-for="mgrID" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+

@@ -1,0 +1,65 @@
+﻿@model CompanyProject.Models.Project
+
+@{
+    ViewData["Title"] = "EditProject";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="margin: 25px">Edit Project</h2>
+
+<div class="row" style="margin: 25px">
+    <div class="col-md-4">
+        <form asp-action="EditProject">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label asp-for="projID" class="control-label">Project ID</label>
+                <input asp-for="projID" class="form-control" readonly/>
+                <span asp-validation-for="projID" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="dueDate" class="control-label">Due Date</label>
+                <input asp-for="dueDate" class="form-control" />
+                <span asp-validation-for="dueDate" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="depID" class="control-label">Department ID</label>
+                <input asp-for="depID" class="form-control" />
+                <span asp-validation-for="depID" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="projName" class="control-label">Project Name</label>
+                <input asp-for="projName" class="form-control" />
+                <span asp-validation-for="projName" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="location" class="control-label">Location</label>
+                <input asp-for="location" class="form-control" />
+                <span asp-validation-for="location" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="cost" class="control-label">Budget</label>
+                <input asp-for="cost" class="form-control" />
+                <span asp-validation-for="cost" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="projStatus" class="control-label">Project Status</label>
+                <input asp-for="projStatus" class="form-control" />
+                <span asp-validation-for="projStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="field" class="control-label">Field</label>
+                <input asp-for="field" class="form-control" />
+                <span asp-validation-for="field" class="text-danger"></span>
+            </div>          
+            <div class="form-group mb-3">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="mb-3">
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+
+

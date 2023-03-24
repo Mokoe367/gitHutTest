@@ -1,0 +1,40 @@
+﻿@model CompanyProject.Models.Supplier
+
+@{
+    ViewData["Title"] = "AddSupplier";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="margin: 25px">Add Supplier</h2>
+
+<div class="row" style="margin: 25px">
+    <div class="col-md-4">
+        <form asp-action="AddSupplier">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>           
+            <div class="form-group mb-3">
+                <label asp-for="name" class="control-label">Supplier Name</label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="product" class="control-label">Product</label>
+                <input asp-for="product" class="form-control" />
+                <span asp-validation-for="product" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="roleID" class="control-label">RoleID</label>
+                <input asp-for="roleID" class="form-control" />
+                <span asp-validation-for="roleID" class="text-danger"></span>
+            </div>            
+            <div class="form-group mb-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="mb-3">
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+
+

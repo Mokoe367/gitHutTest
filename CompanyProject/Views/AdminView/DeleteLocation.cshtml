@@ -1,0 +1,29 @@
+﻿@model CompanyProject.Models.Dep_locations
+
+@{
+    ViewData["Title"] = "DeleteLocation";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="margin:25px">DeleteLocation</h2>
+
+<h3 style="margin:25px">Are you sure you want to delete this?</h3>
+<div style="margin:25px">
+    <h4>Department locations</h4>   
+    <div class="col-md-4">
+        <form asp-action="DeleteLocation">
+            <div class="form-group mb-3">
+                <label asp-for="depID" class="control-label">Department ID</label>
+                <input asp-for="depID" class="form-control" readonly />
+                <span asp-validation-for="depID" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="loc_name" class="control-label">Location Name</label>
+                <input asp-for="loc_name" class="form-control" readonly />
+                <span asp-validation-for="loc_name" class="text-danger"></span>
+            </div>
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-action="Index">Back to List</a>
+        </form>
+    </div>
+</div>

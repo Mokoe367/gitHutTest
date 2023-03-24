@@ -1,0 +1,59 @@
+﻿@model CompanyProject.Models.Distributed_to
+
+@{
+    ViewData["Title"] = "EditDistribution";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="margin: 25px;">Edit Distribution</h2>
+
+<div class="row" style="margin: 25px;">
+    <div class="col-md-4">
+        <form asp-action="EditDistribution">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3" style="display:none">
+                <label asp-for="tempSupID" class="control-label">Supplier ID</label>
+                <input asp-for="tempSupID" class="form-control" readonly/>
+                <span asp-validation-for="tempSupID" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3" style="display:none">
+                <label asp-for="tempAssetID" class="control-label">Asset ID</label>
+                <input asp-for="tempAssetID" class="form-control" readonly/>
+                <span asp-validation-for="tempAssetID" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3" style="display:none">
+                <label asp-for="tempDepID" class="control-label">Department ID</label>
+                <input asp-for="tempDepID" class="form-control" readonly/>
+                <span asp-validation-for="tempDepID" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="supID" class="control-label">Supplier ID</label>
+                <input asp-for="supID" class="form-control" />
+                <span asp-validation-for="supID" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="assetID" class="control-label">Asset ID</label>
+                <input asp-for="assetID" class="form-control" />
+                <span asp-validation-for="assetID" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="depID" class="control-label">Department ID</label>
+                <input asp-for="depID" class="form-control" />
+                <span asp-validation-for="depID" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="status" class="control-label">Status</label>
+                <input asp-for="status" class="form-control" />
+                <span asp-validation-for="status" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="mb-3">
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+

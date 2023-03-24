@@ -1,0 +1,90 @@
+﻿@model IEnumerable<CompanyProject.Models.TaskDetails>
+
+@{
+    ViewData["Title"] = "TaskDetails";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
+}
+
+<style>
+    #table-div {
+        margin: 25px;
+    }
+</style>
+
+@if (ViewData["TaskInfo"] != null)
+{
+    <h2 style="margin: 25px">@ViewData["TaskInfo"].ToString()</h2>
+}
+
+<p>
+    <a asp-action="Enlist" asp-controller="Manager" asp-route-id="@ViewData["employee"]">
+        Enlist To A New Task
+    </a>
+</p>
+
+<div id="table-div">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Employee ID
+                </th>
+                <th>
+                    Project ID
+                </th>
+                <th>
+                    Task ID
+                </th>
+                <th>
+                    Task Name
+                </th>
+                <th>
+                    Hours
+                </th>
+                <th>
+                    Task Budget
+                </th>
+                <th>
+                    Task Due Date
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.empID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.projID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.taskID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.taskName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.hours)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.budget)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dueDate)
+                    </td>
+                    <td>                                         
+                        @Html.ActionLink("Unlist", "Unlist", new { empid = item.empID, taskid = item.taskID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).ready(function () {
+        $('table').DataTable();
+    });
+</script>

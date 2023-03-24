@@ -1,0 +1,48 @@
+﻿@model CompanyProject.Models.Login
+
+@{
+    ViewData["Title"] = "AddLogin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@{ 
+    TempData.Keep("loginID");
+}
+
+<h2 style="margin:25px">Add Login</h2>
+
+<div class="row" style="margin:25px">
+    <div class="col-md-4">
+        <form asp-action="AddLogin">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label asp-for="ID" class="control-label"></label>
+                <input asp-for="ID" class="form-control" value="@TempData["loginID"]" readonly />
+                <span asp-validation-for="ID" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="username" class="control-label"></label>
+                <input asp-for="username" class="form-control" />
+                <span asp-validation-for="username" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="password" class="control-label"></label>
+                <input asp-for="password" class="form-control" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="privilege" class="control-label"></label>
+                <input asp-for="privilege" class="form-control" />
+                <span asp-validation-for="privilege" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="mb-3">
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+

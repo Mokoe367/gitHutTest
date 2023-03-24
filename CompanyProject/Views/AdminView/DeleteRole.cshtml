@@ -1,0 +1,31 @@
+﻿@model CompanyProject.Models.Role
+
+@{
+    ViewData["Title"] = "DeleteRole";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="margin:25px">Delete Role</h2>
+
+<h3 style="margin:25px">Are you sure you want to delete this?</h3>
+<div style="margin:25px">
+    <h4>Role</h4>
+    <hr />
+    <div class="col-md-4">
+        <form asp-action="DeleteRole">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label asp-for="roleID" class="control-label">Role ID</label>
+                <input asp-for="roleID" class="form-control" readonly />
+                <span asp-validation-for="roleID" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="roleName" class="control-label">Role Name</label>
+                <input asp-for="roleName" class="form-control" readonly />
+                <span asp-validation-for="roleName" class="text-danger"></span>
+            </div>
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-action="Index">Back to List</a>
+        </form>
+    </div>
+</div>

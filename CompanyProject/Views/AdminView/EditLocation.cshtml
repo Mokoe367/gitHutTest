@@ -1,0 +1,44 @@
+﻿@model CompanyProject.Models.Dep_locations
+
+@{
+    ViewData["Title"] = "EditLocation";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="margin: 25px;">Edit Location</h2>
+
+<div class="row" style="margin: 25px;">
+    <div class="col-md-4">
+        <form asp-action="EditLocation">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3" style="display: none">
+                <label asp-for="pastDepID" class="control-label">Department ID</label>
+                <input asp-for="pastDepID" class="form-control" readonly/>
+                <span asp-validation-for="pastDepID" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3" style="display: none">
+                <label asp-for="pastLoc_name" class="control-label">Location Name</label>
+                <input asp-for="pastLoc_name" class="form-control" readonly/>
+                <span asp-validation-for="pastLoc_name" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="depID" class="control-label">Department ID</label>
+                <input asp-for="depID" class="form-control" />
+                <span asp-validation-for="depID" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="loc_name" class="control-label">Location Name</label>
+                <input asp-for="loc_name" class="form-control" />
+                <span asp-validation-for="loc_name" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="mb-3">
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+

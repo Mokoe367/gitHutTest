@@ -1,0 +1,681 @@
+﻿@model IEnumerable<CompanyProject.Models.AdminViewModel>
+@{
+    ViewData["Title"] = "AdminIndex";
+    ViewBag.Title = "Admin View";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    #table-div {
+        margin: 25px;
+    }
+</style>
+
+
+<div style="margin: 25px">
+    <h2>Admin View</h2>
+    @if (ViewData["userInfo"] != null)
+    {
+        @ViewData["userInfo"];
+
+    }
+</div>
+
+<div style="margin: 25px">
+    @if (TempData["success"] != null)
+    {
+        @TempData["success"];
+
+    }
+</div>
+
+<div id="table-div">
+    <a asp-controller="AdminView" class="btn btn-primary" asp-action="AddEmployee">Add Employee</a>
+    <table class="table table-hover col-md-3 table-striped table-bordered caption-top">
+        <caption>Employees</caption>
+        <thead>
+            <tr>
+                <th>
+                    Employee ID
+                </th>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    Middle Name
+                </th>
+                <th>
+                    Last Name
+                </th>
+                <th>
+                    SSN
+                </th>
+                <th>
+                    Address
+                </th>
+                <th>
+                    Gender
+                </th>
+                <th>
+                    Birthday
+                </th>
+                <th>
+                    Salary
+                </th>
+                <th>
+                    Role ID
+                </th>
+                <th>
+                    Department ID
+                </th>
+                <th>
+                    Superviser ID
+                </th>
+                <th>
+                    Deleted Flag
+                </th>
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.FirstOrDefault().Employees)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Lname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ssn)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sex)
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BirthDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Salary)
+                    </td>
+                    <td>
+                        @if (item.RoleID != 0)
+                        {
+                            @Html.DisplayFor(modelItem => item.RoleID)
+                        }                        
+                    </td>
+                    <td>
+                        @if (item.DepID != 0)
+                        {
+                            @Html.DisplayFor(modelItem => item.DepID)
+                        }
+                    </td>
+                    <td>
+                        @if (item.SuperID != 0)
+                        {
+                            @Html.DisplayFor(modelItem => item.SuperID)
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Deleted_flag)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditEmployee", new { id = item.ID }) |
+                        @Html.ActionLink("Login Details", "LoginDetails", new { id = item.ID }) |
+                        @Html.ActionLink("Delete/Restore", "DeleteEmployee", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div id="table-div">
+    <a asp-controller="AdminView" class="btn btn-primary" asp-action="AddDepartment">Add Department</a>
+    <table class="table table-hover col-md-3 table-striped table-bordered caption-top">
+        <caption>Departments</caption>
+        <thead>
+            <tr>
+                <th>
+                    Department ID
+                </th>
+                <th>
+                    Department Name
+                </th>
+                <th>
+                    Department Location
+                </th>
+                <th>
+                    Manager ID
+                </th>
+                <th>
+                    Deleted Flag
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.FirstOrDefault().Departments)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.depID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.depName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.location)
+                    </td>
+                    <td>
+                        @if (item.mgrID != 0)
+                        {
+                            @Html.DisplayFor(modelItem => item.mgrID)
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.deleted_flag)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditDepartment", new { id = item.depID }) |
+                        @Html.ActionLink("Delete/Restore", "DeleteDepartment", new { id = item.depID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div id="table-div">
+    <a asp-controller="AdminView" class="btn btn-primary" asp-action="AddProject">Add Project</a>
+    <table class="table table-hover col-md-3 table-striped table-bordered caption-top">
+        <caption>Projects</caption>
+        <thead>
+            <tr>
+                <th>
+                    Project ID
+                </th>
+                <th>
+                    Project Name
+                </th>
+                <th>
+                    Department ID
+                </th>
+                <th>
+                    Department Location
+                </th>
+                <th>
+                    Budget
+                </th>
+                <th>
+                    Project Status
+                </th>
+                <th>
+                    Project Due Date
+                </th>
+                <th>
+                    deleted_flag
+                </th>
+                <th>
+                    Field
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.FirstOrDefault().Projects)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.projID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.projName)
+                    </td>
+                    <td>
+                        @if (item.depID != 0)
+                        {
+                            @Html.DisplayFor(modelItem => item.depID)
+                        }                        
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.location)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.projStatus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dueDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.deleted_flag)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.field)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditProject", new { id = item.projID }) |
+                        @Html.ActionLink("Delete/Restore", "DeleteProject", new { id = item.projID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div id="table-div">
+    <a asp-controller="AdminView" class="btn btn-primary" asp-action="AddSupplier">Add Supplier</a>
+    <table class="table table-hover col-md-3 table-striped table-bordered caption-top">
+        <caption>Suppliers</caption>
+        <thead>
+            <tr>
+                <th>
+                    Supplier ID
+                </th>
+                <th>
+                    Supplier Name
+                </th>
+                <th>
+                    Supplier product
+                </th>
+                <th>
+                    Role ID
+                </th>
+                <th>
+                    Deleted Flag
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.FirstOrDefault().Suppliers)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.supID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.product)
+                    </td>
+                    <td>
+                        @if (item.roleID != 0)
+                        {
+                            @Html.DisplayFor(modelItem => item.roleID)
+                        }                        
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.deleted_flag)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditSupplier", new {  id=item.supID  }) |                       
+                        @Html.ActionLink("Delete/Restore", "DeleteSupplier", new { id = item.supID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div id="table-div">
+    <a asp-controller="AdminView" class="btn btn-primary" asp-action="AddRole">Add Role</a>
+    <table class="table table-hover col-md-3 table-striped table-bordered caption-top">
+        <caption>Roles</caption>
+        <thead>
+            <tr>
+                <th>
+                    Role ID
+                </th>
+                <th>
+                    Role Name
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.FirstOrDefault().Roles)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.roleID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.roleName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditRole", new { id=item.roleID }) |                        
+                        @Html.ActionLink("Delete", "DeleteRole", new { id = item.roleID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div id="table-div">
+    <a asp-controller="AdminView" class="btn btn-primary" asp-action="AddTask">Add Task</a>
+    <table class="table table-hover col-md-3 table-striped table-bordered caption-top">
+        <caption>Tasks</caption>
+        <thead>
+            <tr>
+                <th>
+                    Task ID
+                </th>
+                <th>
+                    Task Name
+                </th>
+                <th>
+                    Task Budget
+                </th>
+                <th>
+                    Task Due Date
+                </th>
+                <th>
+                    Task Project ID
+                </th>
+                <th>
+                    Deleted Flag
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.FirstOrDefault().Tasks)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.taskID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.taskName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.taskDueDate)
+                    </td>
+                    <td>
+                        @if (item.projID != 0)
+                        {
+                            @Html.DisplayFor(modelItem => item.projID)
+                        }
+                    </td>                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.deleted_flag)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditTask", new { id = item.taskID }) |                   
+                        @Html.ActionLink("Delete/Restore", "DeleteTask", new { id = item.taskID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div id="table-div">
+    <a asp-controller="AdminView" class="btn btn-primary" asp-action="AddAsset">Add Asset</a>
+    <table class="table table-hover col-md-3 table-striped table-bordered caption-top">
+        <caption>Assets</caption>
+        <thead>
+            <tr>
+                <th>
+                    Asset ID
+                </th>
+                <th>
+                    Asset Type
+                </th>
+                <th>
+                    Cost
+                </th>
+                <th>
+                    Supplier ID
+                </th>
+                <th>
+                    Deleted Flag
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.FirstOrDefault().Assets)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.assetID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cost)
+                    </td>
+                    <td>
+                        @if (item.supID != 0)
+                        {
+                            @Html.DisplayFor(modelItem => item.supID)
+                        }                       
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.deleted_flag)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditAsset", new { id = item.assetID }) |                       
+                        @Html.ActionLink("Delete/Restore", "DeleteAsset", new { id = item.assetID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div id="table-div">
+    <a asp-controller="AdminView" class="btn btn-primary" asp-action="AddLocations">Add Locations</a>
+    <table class="table table-hover col-md-3 table-striped table-bordered caption-top">
+        <caption>Locations</caption>
+        <thead>
+            <tr>
+                <th>
+                    Department ID
+                </th>
+                <th>
+                    Location Name
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.FirstOrDefault().Locations)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.depID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.loc_name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditLocation", new { id = item.depID, name = item.loc_name }) |                       
+                        @Html.ActionLink("Delete", "DeleteLocation", new { id = item.depID, name = item.loc_name })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div id="table-div">
+    <a asp-controller="AdminView" class="btn btn-primary" asp-action="AddDistribution">Add Supplier Distributions</a>
+    <table class="table table-hover col-md-3 table-striped table-bordered caption-top">
+        <caption>Supplier Distributions</caption>
+        <thead>
+            <tr>
+                <th>
+                    Department ID
+                </th>
+                <th>
+                    Supplier ID
+                </th>
+                <th>
+                    Asset ID
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Deleted Flag
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.FirstOrDefault().Distributions)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.depID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.supID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.assetID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.deleted_flag)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditDistribution", new { depId = item.depID, supId = item.supID, assetId = item.assetID }) |
+                    @Html.ActionLink("Delete/Restore", "DeleteDistribution", new { depId = item.depID, supId = item.supID, assetId = item.assetID })
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div id="table-div">
+    <a asp-controller="AdminView" class="btn btn-primary" asp-action="AddUse">Add Used By Employee</a>
+    <table class="table table-hover col-md-3 table-striped table-bordered caption-top">
+        <caption>Used By</caption>
+        <thead>
+            <tr>
+                <th>
+                    Employee ID
+                </th>
+                <th>
+                    Supplier ID
+                </th>
+                <th>
+                    Asset ID
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Deleted Flag
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.FirstOrDefault().UsedBy)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.employeeID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.supID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.assetID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.deleted_flag)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditUse", new { empId = item.employeeID, supId = item.supID, assetId = item.assetID }) |
+                    @Html.ActionLink("Delete/Restore", "DeleteUse", new { empId = item.employeeID, supId = item.supID, assetId = item.assetID })
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div id="table-div">
+    <a asp-controller="AdminView" class="btn btn-primary" asp-action="AddWork">Add Employee Works On</a>
+    <table class="table table-hover col-md-3 table-striped table-bordered caption-top">
+        <caption>Works On</caption>
+        <thead>
+            <tr>
+                <th>
+                    Employee ID
+                </th>
+                <th>
+                    Task ID
+                </th>
+                <th>
+                    Hours
+                </th>
+                <th>
+                    Deleted Flag
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.FirstOrDefault().Works_Ons)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.employeeID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TaskID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.hours)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.deleted_flag)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditWork", new { empid = item.employeeID, taskid = item.TaskID }) |                   
+                    @Html.ActionLink("Delete/Restore", "DeleteWork", new { empid = item.employeeID, taskid = item.TaskID })
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('table').DataTable();
+    });
+</script>

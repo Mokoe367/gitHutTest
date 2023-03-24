@@ -1,0 +1,45 @@
+﻿@model CompanyProject.Models.Tasks
+
+@{
+    ViewData["Title"] = "AddTask";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="margin: 25px;">Add Task</h2>
+
+<div class="row" style="margin: 25px;">
+    <div class="col-md-4">
+        <form asp-action="AddTask">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label asp-for="taskName" class="control-label">Task Name</label>
+                <input asp-for="taskName" class="form-control" />
+                <span asp-validation-for="taskName" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="cost" class="control-label">Budget</label>
+                <input asp-for="cost" class="form-control" />
+                <span asp-validation-for="cost" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="taskDueDate" class="control-label">Task Due Date</label>
+                <input asp-for="taskDueDate" class="form-control" />
+                <span asp-validation-for="taskDueDate" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="projID" class="control-label">Project ID</label>
+                <input asp-for="projID" class="form-control" />
+                <span asp-validation-for="projID" class="text-danger"></span>
+            </div>          
+            <div class="form-group mb-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="mb-3">
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+
+

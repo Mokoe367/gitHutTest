@@ -1,0 +1,40 @@
+﻿@model CompanyProject.Models.Asset
+
+@{
+    ViewData["Title"] = "AddAsset";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="margin: 25px;">Add Asset</h2>
+
+<div class="row" style="margin: 25px;">
+    <div class="col-md-4" >
+        <form asp-action="AddAsset">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label asp-for="type" class="control-label">Type</label>
+                <input asp-for="type" class="form-control" />
+                <span asp-validation-for="type" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="cost" class="control-label">Cost</label>
+                <input asp-for="cost" class="form-control" />
+                <span asp-validation-for="cost" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="supID" class="control-label">Supplier ID</label>
+                <input asp-for="supID" class="form-control" />
+                <span asp-validation-for="supID" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="mb-3">
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+
+

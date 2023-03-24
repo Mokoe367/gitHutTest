@@ -1,0 +1,43 @@
+﻿@model CompanyProject.Models.Used_by
+
+@{
+    ViewData["Title"] = "AddUse";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="margin: 25px;">Add Used By</h2>
+
+<div class="row" style="margin: 25px;">
+    <div class="col-md-4">
+        <form asp-action="AddUse">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label asp-for="employeeID" class="control-label">EmployeeID</label>
+                <input asp-for="employeeID" class="form-control" />
+                <span asp-validation-for="employeeID" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="supID" class="control-label">SupplierID</label>
+                <input asp-for="supID" class="form-control" />
+                <span asp-validation-for="supID" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="assetID" class="control-label">AssetID</label>
+                <input asp-for="assetID" class="form-control" />
+                <span asp-validation-for="assetID" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="status" class="control-label">Status</label>
+                <input asp-for="status" class="form-control" />
+                <span asp-validation-for="status" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="mb-3">
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
